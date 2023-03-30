@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slideshow</title>
     <script src="animate.js"></script>
+    <link rel="stylesheet" href="base.css">
     <style>
         .box {
+            /*overflow: hidden;*/
             position: relative;
             width: 800px;
             height: 500px;
@@ -19,12 +21,46 @@
         }
 
         ul {
-            display: none;
+            /* display: none;*/
+            width: 500%;
+            height: 500px;
+        }
+
+        ul img {
+            float: left;
+            width: 800px;
+            height: 500px;
+        }
+
+        .lbtn {
+            position: fixed;
+            left: 100px;
+            top: 300px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            z-index: 999;
+        }
+
+        .rbtn {
+            position: fixed;
+            right: 100px;
+            top: 300px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            z-index: 999;
+        }
+
+        .lbtn:hover,
+        .rbtn:hover {
+            opacity: .5;
         }
     </style>
 </head>
 
 <body>
+    <button class="lbtn">左</button>
 
     <div class="box">
         <ul>
@@ -47,9 +83,34 @@
 
         </ul>
     </div>
+
+    <button class="rbtn">右</button>
 </body>
 <script>
+    var lbtn = document.querySelector('.lbtn');
+    var rbtn = document.querySelector('.rbtn');
+    var ul = document.querySelector('ul');
+    var step = 0;
+    var lslide = lbtn.addEventListener('click', function () {
+        step += 800;
+        ul.style.transform = 'translateX(' + step + 'px)';
+        ul.style.transition = '1s ease'
+        if (step >= 4000) { ul.style.transform = 'translateX(0px)'; ul.style.transition = 'none' }
+        else if (step > 0) { ul.style.transform = 'translateX(4000px)'; ul.style.transition = 'none' }
+    })
+    var rslide = rbtn.addEventListener('click', function () {
+        step -= 800;
+        ul.style.transform = 'translateX(' + step + 'px)';
+        ul.style.transition = '1s ease'
+        console.log(step);
+        if (step >= 4000) { ul.style.transform = 'translateX(-3200px)'; ul.style.transition = 'none' }
+        else if (step > 0) { ul.style.transform = 'translateX(4000px)'; ul.style.transition = 'none' }
+    })
 
+    var autoplay = setInterval(function () {
+
+        rbtn.click();
+    }, 3000)
 </script>
 
 </html>
