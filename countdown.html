@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countdown</title>
+    <style>
+        .box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            justify-content: space-between;
+            transform: translate(-50%, -50%);
+            /* width: 500px;*/
+            padding: 5px;
+            text-align: center;
+            /*background-color: black;*/
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        input {
+            display: flex;
+            border: none;
+            outline: none;
+            margin-left: 10px;
+            box-sizing: border-box;
+            width: 300px;
+        }
+
+        button {
+            height: 40px;
+            border-radius: 10px;
+            color: black;
+            background-color: #fff;
+            text-align: center;
+            /* 水平居中 */
+            /*line-height: 40px;*/
+            /* 垂直居中 */
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"><input type="text" value="请输入手机号" onfocus="if(this.value=='请输入手机号'){this.value=''}"
+            onblur="if(this.value==''){this.value='请输入手机号'}" onblur="this.style.color=gray">
+        <button>发送</button>
+    </div>
+</body>
+<script>
+    var button = document.querySelector('button');
+    var intput = document.querySelector('intput');
+    button.addEventListener('click', function () {
+        var time = 5;
+        var timer = setInterval(function () {
+            button.disabled = true;
+            if (time > 0) {
+                time--;
+                button.innerHTML = '短信已发送' + time + '秒后可重新发送';
+                button.style.color = "gray";
+
+            } else {
+                button.innerHTML = '发送';
+                button.disabled = false;
+                clearInterval(timer);
+                button.style.color = "black";
+            }
+
+        }, 1000);
+
+    })
+    clearInterval(timer);
+</script>
+
+</html>

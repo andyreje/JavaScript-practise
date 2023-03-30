@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间判断</title>
+    <style>
+        #time {
+            display: flex;
+            width: 50%;
+            height: 50%;
+            background-color: #d87d7d;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="time"></p>
+    <img src=https://i.postimg.cc/WbW19XmY/Fj-TKa-WLXw-AMIO3x.jpg alt="">
+</body>
+<script>
+    var hour = prompt("请输入时间：");
+    console.log(hour);
+    if (0 < hour < 12) {
+        document.getElementById("time").innerHTML = "早上好";
+
+    }
+    if (12 < hour < 18) {
+        document.getElementById("time").innerHTML = "下午好";
+
+    }
+    else {
+        document.getElementById("time").innerHTML = "晚上好";
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fixednav</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        .top {
+            width: 90%;
+            height: 300px;
+            background-color: #74c489;
+            margin-bottom: 20px;
+        }
+
+        .banner {
+            width: 90%;
+            height: 400px;
+            background-color: #a43b3b;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            width: 90%;
+            height: 500px;
+            background-color: #444e91;
+            margin-bottom: 20px;
+        }
+
+        .fixednav {
+            position: absolute;
+            top: 400px;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            width: 80px;
+            height: 200px;
+            background-color: #be75b3;
+        }
+
+        button {
+            width: 100%;
+            outline: none;
+            border: 0;
+            background-color: #2121e4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">top</div>
+    <div class="banner">banner</div>
+    <div class="footer">footer</div>
+    <div class="fixednav"><button></button></div>
+</body>
+<script>
+    var banner = document.querySelector('.banner');
+    var footer = document.querySelector('.footer');
+    var top = document.querySelector('.top');
+    var fixednav = document.querySelector('.fixednav');
+    var btn = document.querySelector('button');
+    var fixednavtop = banner.offsetTop - fixednav.offsetTop;
+
+    document.addEventListener('scroll', function () {
+        console.log(footer.offsetTop);
+        if (window.pageYOffset >= banner.offsetTop) {
+            fixednav.style.position = 'fixed';
+            fixednav.style.top = '100px';
+        }
+        if (window.pageYOffset < banner.offsetTop) {
+            fixednav.style.position = 'absolute';
+            fixednav.style.top = '400px';
+        }
+        if (window.pageYOffset >= footer.offsetTop) {
+            btn.innerHTML = '返回';
+        }
+        if (window.pageYOffset < footer.offsetTop) {
+            btn.innerHTML = '';
+        }
+    })
+    document.fixednav.onclick = function () { window.scrollTo(0, top.offsetTop); }
+
+</script>
+
+</html>

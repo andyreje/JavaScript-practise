@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>follow</title>
+    <style>
+        img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://i.postimg.cc/8zkHCyPy/head.jpg" alt="">
+</body>
+<script>
+    var cat = document.querySelector('img');
+    /* document.querySelector('img').style.left;
+     document.querySelector('img').style.top;*/
+    document.addEventListener("mousemove", function (event) {
+        var x = event.clientX;
+        var y = event.clientY;
+        console.log(x);
+        console.log(y);
+        document.querySelector('img').style.left = x - 50 + 'px';
+        document.querySelector('img').style.top = y - 50 + 'px';
+
+    });
+
+
+</script>
+
+</html>

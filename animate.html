@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animate</title>
+    <style>
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #954d4d;
+        }
+
+        .btn500 {
+            position: absolute;
+            top: 300px;
+            left: 0;
+        }
+
+        .btn800 {
+            position: absolute;
+            top: 400px;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn500">移动到500</button>
+    <button class="btn800">移动到800</button>
+    <div class="box"></div>
+</body>
+<script>
+    var box = document.querySelector('.box');
+    var btn500 = document.querySelector('.btn500');
+    var btn800 = document.querySelector('.btn800');
+    function animate(obj, target, callback) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step)
+            console.log(step);
+            if (obj.offsetLeft == target) {
+                clearInterval(obj.timer);
+                if (callback) {
+                    callback();
+                }
+            } else {
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }
+        }, 30)
+    }
+    btn500.addEventListener('click', function () {
+        animate(box, 500);
+    })
+
+    btn800.addEventListener('click', function () {
+        animate(box, 800, function () {
+            box.style.backgroundColor = '#1c0d0d';
+        });
+    })
+
+
+</script>
+
+</html>
