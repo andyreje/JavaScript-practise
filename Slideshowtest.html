@@ -60,57 +60,60 @@
 </head>
 
 <body>
-    <button class="lbtn">左</button>
+    <div class="all"><button class="lbtn">左</button>
 
-    <div class="box">
-        <ul>
+        <div class="box">
+            <ul>
 
-            <li><a href="#"><img class="p1"
-                        src="https://img2.baidu.com/it/u=2243573419,589412055&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
-                        alt=""></a></li>
-            <li><a href="#"><img class="p2"
-                        src="https://img2.baidu.com/it/u=3170243357,3097706939&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
-                        alt=""></a></li>
-            <li><a href="#"><img class="p3"
-                        src="https://img1.baidu.com/it/u=1929941019,3324507395&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
-                        alt=""></a></li>
-            <li><a href="#"><img class="p4"
-                        src="https://img2.baidu.com/it/u=2738198884,3183508795&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281"
-                        alt=""></a></li>
-            <li><a href="#"><img class="p5"
-                        src="https://img0.baidu.com/it/u=3032776730,2178451350&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
-                        alt=""></a></li>
+                <li><a href="#"><img class="p1"
+                            src="https://img2.baidu.com/it/u=2243573419,589412055&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+                            alt=""></a></li>
+                <li><a href="#"><img class="p2"
+                            src="https://img2.baidu.com/it/u=3170243357,3097706939&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
+                            alt=""></a></li>
+                <li><a href="#"><img class="p3"
+                            src="https://img1.baidu.com/it/u=1929941019,3324507395&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+                            alt=""></a></li>
+                <li><a href="#"><img class="p4"
+                            src="https://img2.baidu.com/it/u=2738198884,3183508795&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281"
+                            alt=""></a></li>
+                <li><a href="#"><img class="p5"
+                            src="https://img0.baidu.com/it/u=3032776730,2178451350&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
+                            alt=""></a></li>
 
-        </ul>
+            </ul>
+        </div>
+
+        <button class="rbtn">右</button>
     </div>
 
-    <button class="rbtn">右</button>
 </body>
 <script>
     var lbtn = document.querySelector('.lbtn');
     var rbtn = document.querySelector('.rbtn');
+    var all = document.querySelector('.all');
     var ul = document.querySelector('ul');
     var step = 0;
     var lslide = lbtn.addEventListener('click', function () {
         step += 800;
         ul.style.transform = 'translateX(' + step + 'px)';
         ul.style.transition = '1s ease'
-        if (step >= 4000) { ul.style.transform = 'translateX(0px)'; ul.style.transition = 'none' }
-        else if (step > 0) { ul.style.transform = 'translateX(4000px)'; ul.style.transition = 'none' }
     })
     var rslide = rbtn.addEventListener('click', function () {
         step -= 800;
         ul.style.transform = 'translateX(' + step + 'px)';
         ul.style.transition = '1s ease'
         console.log(step);
-        if (step >= 4000) { ul.style.transform = 'translateX(-3200px)'; ul.style.transition = 'none' }
-        else if (step > 0) { ul.style.transform = 'translateX(4000px)'; ul.style.transition = 'none' }
+
     })
 
-    var autoplay = setInterval(function () {
 
+    var autoplay = setInterval(function () {
         rbtn.click();
+        console.log(3);
     }, 3000)
+
+
 </script>
 
 </html>
