@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="base.css">
     <style>
         .box {
-            overflow: hidden;
+            /*overflow: hidden;*/
             position: relative;
             width: 800px;
             height: 500px;
@@ -101,13 +101,16 @@
         step += 800;  // 计算下一张图片的位置
         if (step <= -4000) {
             step = 0;
-            ul.style.transition = 'none';
+            ul.style.transform = 'translateX(' + step + 'px)';
+            ul.style.transition = '';
         } else if (step > 0) {
             step = -3200;
-            ul.style.transition = 'none';
+            ul.style.transform = 'translateX(' + step + 'px)';
+            ul.style.transition = '';
+        } else {
+            ul.style.transform = 'translateX(' + step + 'px)';  // 移动图片位置
+            ul.style.transition = '1s ease';  // 添加过渡效果
         }
-        ul.style.transform = 'translateX(' + step + 'px)';  // 移动图片位置
-        ul.style.transition = '1s ease';  // 添加过渡效果
     })
 
     // 右箭头按钮的点击事件监听器
@@ -115,13 +118,17 @@
         step -= 800;  // 计算下一张图片的位置
         if (step <= -4000) {
             step = 0;
-            ul.style.transition = 'none';
+            ul.style.transform = 'translateX(' + step + 'px)';
+            ul.style.transition = '';
         } else if (step > 0) {
             step = -3200;
-            ul.style.transition = 'none';
+            ul.style.transform = 'translateX(' + step + 'px)';
+            ul.style.transition = '';
+        } else {
+            ul.style.transform = 'translateX(' + step + 'px)';  // 移动图片位置
+            ul.style.transition = '1s ease';  // 添加过渡效果
         }
-        ul.style.transform = 'translateX(' + step + 'px)';  // 移动图片位置
-        ul.style.transition = '1s ease';  // 添加过渡效果
+
         console.log(step);
     })
 
