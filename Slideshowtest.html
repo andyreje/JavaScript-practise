@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="base.css">
     <style>
         .box {
-            /*overflow: hidden;*/
+            overflow: hidden;
             position: relative;
             width: 800px;
             height: 500px;
@@ -89,30 +89,84 @@
 
 </body>
 <script>
-    var lbtn = document.querySelector('.lbtn');
-    var rbtn = document.querySelector('.rbtn');
-    var all = document.querySelector('.all');
-    var ul = document.querySelector('ul');
-    var step = 0;
+    // 获取需要操作的元素
+    var lbtn = document.querySelector('.lbtn');  // 左箭头按钮
+    var rbtn = document.querySelector('.rbtn');  // 右箭头按钮
+    var ul = document.querySelector('ul');  // 包含所有图片的ul元素
+    var step = 0;  // 记录当前显示的图片位置
+    var autoplay;  // 自动播放定时器
+
+    // 左箭头按钮的点击事件监听器
     var lslide = lbtn.addEventListener('click', function () {
-        step += 800;
-        ul.style.transform = 'translateX(' + step + 'px)';
-        ul.style.transition = '1s ease'
+        step += 800;  // 计算下一张图片的位置
+        if (step <= -4000) {
+            step = 0;
+            ul.style.transition = 'none';
+        } else if (step > 0) {
+            step = -3200;
+            ul.style.transition = 'none';
+        }
+        ul.style.transform = 'translateX(' + step + 'px)';  // 移动图片位置
+        ul.style.transition = '1s ease';  // 添加过渡效果
     })
+
+    // 右箭头按钮的点击事件监听器
     var rslide = rbtn.addEventListener('click', function () {
-        step -= 800;
-        ul.style.transform = 'translateX(' + step + 'px)';
-        ul.style.transition = '1s ease'
+        step -= 800;  // 计算下一张图片的位置
+        if (step <= -4000) {
+            step = 0;
+            ul.style.transition = 'none';
+        } else if (step > 0) {
+            step = -3200;
+            ul.style.transition = 'none';
+        }
+        ul.style.transform = 'translateX(' + step + 'px)';  // 移动图片位置
+        ul.style.transition = '1s ease';  // 添加过渡效果
         console.log(step);
+    })
 
+    ul.addEventListener('transitionend', function () {
+        ul.style.transition = '';
     })
 
 
-    var autoplay = setInterval(function () {
-        rbtn.click();
-        console.log(3);
-    }, 3000)
 
+    // 鼠标悬停在图片或按钮上时停止自动播放
+    ul.addEventListener('mouseover', function () {
+        clearInterval(autoplay);  // 清除自动播放定时器
+    });
+
+    lbtn.addEventListener('mouseover', function () {
+        clearInterval(autoplay);  // 清除自动播放定时器
+    });
+
+    rbtn.addEventListener('mouseover', function () {
+        clearInterval(autoplay);  // 清除自动播放定时器
+    });
+
+    // 鼠标移开图片或按钮时恢复自动播放
+    ul.addEventListener('mouseout', function () {
+        autoplay = setInterval(function () {
+            rbtn.click();  // 模拟点击右箭头按钮
+        }, 3000);
+    });
+
+    lbtn.addEventListener('mouseout', function () {
+        autoplay = setInterval(function () {
+            rbtn.click();  // 模拟点击右箭头按钮
+        }, 3000);
+    });
+
+    rbtn.addEventListener('mouseout', function () {
+        autoplay = setInterval(function () {
+            rbtn.click();  // 模拟点击右箭头按钮
+        }, 3000);
+    });
+
+    // 初始自动播放
+    autoplay = setInterval(function () {
+        rbtn.click();  // 模拟点击右箭头按钮
+    }, 3000);
 
 </script>
 
