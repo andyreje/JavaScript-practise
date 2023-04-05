@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>swipertest</title>
+    <link rel="stylesheet" href="swiper-bundle.min.css">
+    <style>
+        .swiper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 300px;
+        }
+
+        img {
+            width: 600px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="swiper-bundle.min.js"></script>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><a href="#"><img class="p1"
+                        src="https://img2.baidu.com/it/u=2243573419,589412055&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+                        alt=""></a></div>
+            <div class="swiper-slide"><a href="#"><img class="p2"
+                        src="https://img2.baidu.com/it/u=3170243357,3097706939&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
+                        alt=""></a></div>
+            <div class="swiper-slide"><a href="#"><img class="p4"
+                        src="https://img2.baidu.com/it/u=2738198884,3183508795&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281"
+                        alt=""></a></div>
+        </div>
+
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</body>
+<script>
+    var mySwiper = new Swiper('.swiper', {
+        loop: true, // 循环模式选项
+        autoplay: true,
+        freemode: true,
+        effect: 'cards',
+
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // 如果需要滚动条
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            dynamicBullets: true,
+        },
+    })        
+</script>
+
+
+</html>
